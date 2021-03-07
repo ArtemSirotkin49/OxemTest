@@ -1,0 +1,9 @@
+{
+    "autoload": {
+        "psr-4": {
+            "Root\\Animal\\": "classes/",
+            "Root\\Barn\\": "classes/",
+            "Root\\Farm\\": "classes/"
+        }
+    }
+}

@@ -1,8 +1,5 @@
 <?php
-require_once (dirname(__FILE__) . "/classes/barn.php");
-require_once (dirname(__FILE__) . "/classes/chicken.php");
-require_once (dirname(__FILE__) . "/classes/cow.php");
-require_once (dirname(__FILE__) . "/classes/farm.php");
+require dirname(__FILE__) . '/vendor/autoload.php';
 
 use \Root\Animal\Chicken as Chicken;
 use \Root\Animal\Cow as Cow;

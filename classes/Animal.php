@@ -11,9 +11,4 @@ class Animal
     {
         $this->number = $number;
     }
-
-    public function getNumber()
-    {
-        return $this->number;
-    }
 }
