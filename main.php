@@ -12,6 +12,5 @@ for ($i = 0; $i < 10; $i++) {
 for ($i = 0; $i < 20; $i++) {
     $farm->addAnimal(new Chicken());
 }
-
 echo $farm->getProducts();
 
