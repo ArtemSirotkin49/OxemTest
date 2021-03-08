@@ -17,29 +17,17 @@ class Farm
 
     public function getProducts()
     {
-        // получение продукции в массив products
         $products = [];
         foreach ($this->barn->getAnimals() as $animal) {
-            $products[] = $animal->generateProduct();
-        }
-        // получение всех типов продукции в массив productTypes
-        $productTypes = [];
-        foreach ($products as $product) {
-            $productType = explode(" ", $product, 2)[1];
-            if (array_search($productType, $productTypes) === false) {
-                $productTypes[] = $productType;
-            }
+            $products[$animal->getProduction()][] = $animal->generateProduct();
         }
         $res = "";
-        // подсчёт всей собранной продукции
-        foreach ($productTypes as $productType) {
-            $productNumber = 0;
-            foreach ($products as $product) {
-                if (explode(" ", $product, 2)[1] == $productType) {
-                    $productNumber += intval(explode(" ", $product)[0]);
-                }
+        foreach ($products as $production => $arValues) {
+            $summ = 0;
+            foreach ($arValues as $value) {
+                $summ += $value;
             }
-            $res .= $productNumber . " " . $productType . PHP_EOL;
+            $res .= $summ . " " . $production . PHP_EOL;
         }
         $this->harvesting[] = $res;
         return $res;
