@@ -19,15 +19,15 @@ class Farm
     {
         $products = [];
         foreach ($this->barn->getAnimals() as $animal) {
-            $products[$animal->getProduction()][] = $animal->generateProduct();
+            if (!empty($products[$animal->getProduction()])) {
+                $products[$animal->getProduction()] += $animal->generateProduct();
+                continue;
+            }
+            $products[$animal->getProduction()] = $animal->generateProduct();
         }
         $res = "";
-        foreach ($products as $production => $arValues) {
-            $summ = 0;
-            foreach ($arValues as $value) {
-                $summ += $value;
-            }
-            $res .= $summ . " " . $production . PHP_EOL;
+        foreach ($products as $production => $value) {
+            $res .= $value . " " . $production . PHP_EOL;
         }
         $this->harvesting[] = $res;
         return $res;
